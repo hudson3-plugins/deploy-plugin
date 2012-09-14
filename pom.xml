@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.eclipse.hudson.plugins</groupId>
+    <artifactId>hudson-plugin-parent</artifactId>
+    <version>3.0.0-RC2</version>
+  </parent>
+
+    <groupId>org.hudsonci.plugins</groupId>
+    <artifactId>deploy</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+    <packaging>hpi</packaging>
+    <name>Hudson Deploy Plugin</name>
+    <description>Plugin to deploy ear/war build artifacts to remote Application Servers. Supported Servers are JBoss 3/4/6, Glassfish 2/3, Tomcat 5/6/7.</description>
+    <url>http://wiki.hudson-ci.org/display/HUDSON/Deploy+Plugin</url>
+    
+    <properties>
+        <cargo.version>1.1.2</cargo.version>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git://github.com/hudson-plugins/deploy-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:hudson-plugins/deloy-plugin.git</developerConnection>
+        <url>https://github.com/hudson-plugins/deploy-plugin</url>
+    </scm>
+    
+    <licenses>
+        <license>
+            <name>The MIT license</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <developers>
+        <developer>
+            <id>wjprakash</id>
+            <name>Winston Prakash</name>
+            <email>Winston.Prakash@gmail.com</email>
+        </developer>
+        <developer>
+            <id>christ66</id>
+            <name>Steven Christou</name>
+            <email>christ66@uwm.edu</email>
+        </developer>
+    </developers>
+    
+    <contributors>
+        <contributor> 
+            <name>Kohsuke Kawaguchi</name>
+        </contributor>
+    </contributors>
+    
+    <repositories>
+        <repository>
+            <id>JBoss Repo</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <name>JBoss Repo</name>
+            <layout>default</layout>
+        </repository>
+        
+        <repository>
+            <id>jboss-deprecated-repository</id>
+            <name>JBoss Deprecated Maven Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/deprecated/</url>
+            <layout>default</layout>
+        </repository>
+         
+    </repositories>
+  
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-core-api-generic</artifactId>
+            <version>${cargo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>dom4j</groupId>
+                    <artifactId>dom4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jaxen</groupId>
+                    <artifactId>jaxen</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ant</groupId>
+                    <artifactId>ant</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    
+        <dependency>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-core-container-jboss</artifactId>
+            <version>${cargo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-core-container-tomcat</artifactId>
+            <version>${cargo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-core-container-glassfish</artifactId>
+            <version>${cargo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-core-container-weblogic</artifactId>
+            <version>${cargo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-controller-client</artifactId>
+            <version>7.1.0.Final</version>
+        </dependency>        
+        <dependency>
+            <groupId>org.jboss.remoting3</groupId>
+            <artifactId>jboss-remoting</artifactId>
+            <version>3.2.4.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-launcher</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+
+</project>
