@@ -28,8 +28,8 @@ import java.net.URLClassLoader;
 /**
  * Provides container-specific glue code.
  *
- * <p>
- * To support remote operations as an inner class, marking the class as serializable.
+ * <p> To support remote operations as an inner class, marking the class as
+ * serializable.
  *
  * @author Kohsuke Kawaguchi
  */
@@ -37,12 +37,14 @@ public abstract class CargoContainerAdapter extends ContainerAdapter implements 
 
     /**
      * Returns the container ID used by Cargo.
+     *
      * @return
      */
     protected abstract String getContainerId();
 
     /**
      * Fills in the {@link Configuration} object.
+     *
      * @param config
      */
     protected abstract void configure(Configuration config);
@@ -64,6 +66,7 @@ public abstract class CargoContainerAdapter extends ContainerAdapter implements 
 
     /**
      * Creates a Deployable object from the given file object.
+     *
      * @param deployableFile The deployable file to create the Deployable from.
      * @return A Deployable object.
      */
@@ -73,21 +76,23 @@ public abstract class CargoContainerAdapter extends ContainerAdapter implements 
 
     public boolean redeploy(FilePath war, AbstractBuild<?, ?> build, Launcher launcher, final BuildListener listener) throws IOException, InterruptedException {
         return war.act(new FileCallable<Boolean>() {
-
             public Boolean invoke(File f, VirtualChannel channel) throws IOException {
                 if (!f.exists()) {
                     listener.error(Messages.DeployPublisher_NoSuchFile(f));
                     return true;
                 }
-
-                final ConfigurationFactory configFactory = new DefaultConfigurationFactory();
-                final ContainerFactory containerFactory = new DefaultContainerFactory();
-                final DeployerFactory deployerFactory = new DefaultDeployerFactory();
+                
+                ConfigurationFactory configFactory = new DefaultConfigurationFactory();
+                ContainerFactory containerFactory = new DefaultContainerFactory();
+                DeployerFactory deployerFactory = new DefaultDeployerFactory();
 
                 ClassLoader pluginClassLoader = DeployPublisher.class.getClassLoader();
                 ClassLoader prevContextClassLoader = Thread.currentThread().getContextClassLoader();
                 try {
                     Thread.currentThread().setContextClassLoader(pluginClassLoader);
+//                    ConfigurationFactory configFactory = new DefaultConfigurationFactory(pluginClassLoader);
+//                    ContainerFactory containerFactory = new DefaultContainerFactory(pluginClassLoader);
+//                    DeployerFactory deployerFactory = new DefaultDeployerFactory(pluginClassLoader);
                     Container container = getContainer(configFactory, containerFactory, getContainerId());
                     deploy(deployerFactory, listener, container, f);
                 } finally {
