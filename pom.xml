@@ -6,12 +6,12 @@
     <groupId>org.eclipse.hudson.plugins</groupId>
     <artifactId>hudson-plugin-parent</artifactId>
     <version>3.0.0</version>
-  <relativePath/>
+  <relativePath />
   </parent>
 
   <groupId>org.hudsonci.plugins</groupId>
   <artifactId>deploy</artifactId>
-  <version>1.9-h-1-SNAPSHOT</version>
+  <version>1.9-h-1</version>
   <packaging>hpi</packaging>
   <name>Deploy to container Plugin</name>
   <description>Deploy to container Plugin</description>
