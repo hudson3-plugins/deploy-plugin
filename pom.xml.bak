@@ -3,24 +3,21 @@
   <modelVersion>4.0.0</modelVersion>
   
   <parent>
-    <groupId>org.eclipse.hudson.plugins</groupId>
-    <artifactId>hudson-plugin-parent</artifactId>
-    <version>3.0.0</version>
-  <relativePath/>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>1.409</version>
   </parent>
 
-  <groupId>org.hudsonci.plugins</groupId>
   <artifactId>deploy</artifactId>
-  <version>1.9-h-1-SNAPSHOT</version>
+  <version>1.9</version>
   <packaging>hpi</packaging>
   <name>Deploy to container Plugin</name>
-  <description>Deploy to container Plugin</description>
-  <url>http://wiki.hudson-ci.org/display/HUDSON/Deploy+Plugin</url>
+  <url>http://wiki.jenkins-ci.org/display/JENKINS/Deploy+Plugin</url>
   
   <scm>
-   <connection>scm:git:git://github.com/hudson3-plugins/deploy-plugin.git</connection>
-   <developerConnection>scm:git:git@github.com:hudson3-plugins/deploy-plugin.git</developerConnection>
-   <url>https://github.com/hudson3-plugins/deploy-plugin</url>
+   <connection>scm:git:git://github.com/jenkinsci/deploy-plugin.git</connection>
+   <developerConnection>scm:git:git@github.com:jenkinsci/deploy-plugin.git</developerConnection>
+   <url>https://github.com/jenkinsci/deploy-plugin</url>
   </scm>  
   
   <developers>
@@ -49,7 +46,7 @@
           <artifactId>jaxen</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>org.apache.ant</groupId>
+          <groupId>ant</groupId>
           <artifactId>ant</artifactId>
         </exclusion>
       </exclusions>
@@ -96,7 +93,6 @@
 
   <properties>
     <cargo.version>1.0.6</cargo.version>
-  <hudsonTags>upload</hudsonTags>
   </properties>
 
     <pluginRepositories>
@@ -105,11 +101,4 @@
             <url>http://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
-<licenses>
-    <license>
-      <name>The MIT license</name>
-      <url>http://opensource.org/licenses/MIT</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
 </project>

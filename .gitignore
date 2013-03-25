@@ -1,8 +1,8 @@
+build
 target
 .classpath
-.settings
 .project
+.settings
 *.iml
-*.ipr
-*.iws
 work
+nb-configuration.xml

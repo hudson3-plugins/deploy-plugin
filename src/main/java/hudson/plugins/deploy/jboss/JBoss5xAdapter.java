@@ -2,26 +2,17 @@ package hudson.plugins.deploy.jboss;
 
 import hudson.Extension;
 import hudson.plugins.deploy.ContainerAdapterDescriptor;
-import org.codehaus.cargo.container.property.GeneralPropertySet;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- * Cargo Container Adapter for JBoss 5.x remote deployment
  * @author Kohsuke Kawaguchi
- * @author Winston Prakash
  */
 public class JBoss5xAdapter extends JBossAdapter {
-    
-    @Property(GeneralPropertySet.RMI_PORT)
-    public final Integer rmiPort;
-    
     @DataBoundConstructor
-    public JBoss5xAdapter(String url, String password, String userName, Integer rmiPort) {
+    public JBoss5xAdapter(String url, String password, String userName) {
         super(url, password, userName);
-        this.rmiPort = rmiPort;
     }
 
-    @Override
     public String getContainerId() {
         return "jboss5x";
     }
