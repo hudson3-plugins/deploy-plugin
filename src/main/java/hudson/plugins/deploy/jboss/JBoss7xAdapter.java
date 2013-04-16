@@ -2,33 +2,43 @@ package hudson.plugins.deploy.jboss;
 
 import hudson.Extension;
 import hudson.plugins.deploy.ContainerAdapterDescriptor;
+
 import org.codehaus.cargo.container.Container;
+import org.codehaus.cargo.container.jboss.JBossPropertySet;
 import org.codehaus.cargo.generic.ContainerFactory;
 import org.codehaus.cargo.generic.configuration.ConfigurationFactory;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- * JBoss 3.x.
+ * Cargo Container Adapter for JBoss 7.x remote deployment
  * 
- * @author Kohsuke Kawaguchi
+ * @author Steven Christou
+ *
  */
-public class JBoss3xAdapter extends JBossAdapter {
+public class JBoss7xAdapter extends JBoss5xAdapter {
+
+    @Property(JBossPropertySet.JBOSS_MANAGEMENT_PORT)
+    public final Integer managementPort;
+    
     @DataBoundConstructor
-    public JBoss3xAdapter(String url, String password, String userName) {
-        super(url, password, userName);
+    public JBoss7xAdapter(String url, String password, String userName, Integer managementPort) {
+        super(url, password, userName, managementPort);
+        this.managementPort = managementPort;
     }
 
+    @Override
     public String getContainerId() {
-        return "jboss3x";
+        return "jboss7x";
     }
+
 
     @Extension
     public static final class DescriptorImpl extends ContainerAdapterDescriptor {
         public String getDisplayName() {
-            return "JBoss 3.x";
+            return "JBoss 7.x";
         }
     }
-    //For test
+    //For testing
     @Override
     protected Container getContainer(ConfigurationFactory configFactory, ContainerFactory containerFactory, String id) {
         return super.getContainer(configFactory, containerFactory, id);

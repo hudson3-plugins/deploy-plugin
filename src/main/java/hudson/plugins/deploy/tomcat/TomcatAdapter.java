@@ -9,6 +9,7 @@ import org.codehaus.cargo.container.tomcat.TomcatWAR;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.codehaus.cargo.container.property.RemotePropertySet;
 
 /**
  * Base class for Tomcat adapters.
@@ -30,7 +31,7 @@ public abstract class TomcatAdapter extends PasswordProtectedAdapterCargo {
         super.configure(config);
         try {
             URL _url = new URL(url + "/manager");
-            config.setProperty(TomcatPropertySet.MANAGER_URL,_url.toExternalForm());
+            config.setProperty(RemotePropertySet.URI,_url.toExternalForm());
         } catch (MalformedURLException e) {
             throw new AssertionError(e);
         }

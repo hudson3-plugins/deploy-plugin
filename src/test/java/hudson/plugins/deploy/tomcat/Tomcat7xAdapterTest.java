@@ -1,6 +1,14 @@
 package hudson.plugins.deploy.tomcat;
 
+import java.util.HashMap;
+import java.util.Map;
+import org.codehaus.cargo.container.configuration.Configuration;
+import org.codehaus.cargo.container.configuration.ConfigurationCapability;
+import org.codehaus.cargo.container.configuration.ConfigurationType;
+import org.codehaus.cargo.container.property.RemotePropertySet;
 import org.codehaus.cargo.container.tomcat.Tomcat7xRemoteContainer;
+import org.codehaus.cargo.container.tomcat.TomcatPropertySet;
+import org.codehaus.cargo.util.log.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,5 +38,30 @@ public class Tomcat7xAdapterTest {
         Assert.assertEquals(adapter.url,url);
         Assert.assertEquals(adapter.userName,username);
         Assert.assertEquals(adapter.getPassword(),password);
+    }
+    
+    @Test
+    public void testUrl() {
+        Configuration configuration = new Configuration() {
+            Map<String, String> properties = new HashMap<String, String>();
+            public void setLogger(Logger arg0) {}
+            public Logger getLogger() { return null; }
+            public ConfigurationType getType() {return null;}
+            public ConfigurationCapability getCapability() { return null; }
+            
+            public Map<String, String> getProperties() {
+                return properties;
+            }
+            public void setProperty(String arg0, String arg1) {
+                properties.put(arg0, arg1);
+            }
+            
+            public String getPropertyValue(String arg0) {
+                return properties.get(arg0);
+            }
+        };
+        
+        adapter.configure(configuration);
+        Assert.assertEquals("http://localhost:8080/manager/text", configuration.getPropertyValue(RemotePropertySet.URI));
     }
 }
