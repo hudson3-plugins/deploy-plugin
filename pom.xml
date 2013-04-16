@@ -11,7 +11,7 @@
 
     <groupId>org.hudsonci.plugins</groupId>
     <artifactId>deploy</artifactId>
-    <version>1.9-h-2-SNAPSHOT</version>
+    <version>1.9-h-2</version>
     <packaging>hpi</packaging>
     <name>Deploy to container Plugin</name>
     <description>Deploy to container Plugin</description>
