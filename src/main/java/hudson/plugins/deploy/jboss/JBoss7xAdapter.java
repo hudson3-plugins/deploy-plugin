@@ -17,7 +17,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
  */
 public class JBoss7xAdapter extends JBoss5xAdapter {
 
-    @Property(JBossPropertySet.JBOSS_MANAGEMENT_PORT)
+    @Property(JBossPropertySet.JBOSS_MANAGEMENT_HTTP_PORT)
     public final Integer managementPort;
     
     @DataBoundConstructor
