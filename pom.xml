@@ -19,8 +19,7 @@
   
     <properties>
         <cargo.version>1.4.5</cargo.version>
-        <jboss.version>7.2.0.Final</jboss.version>
-        <jboss.remoting.version>3.2.17.GA</jboss.remoting.version>
+        <wildfly.version>8.2.1.Final</wildfly.version>
         <glassfish.version>3.1.2.2</glassfish.version>
         <hudsonTags>upload</hudsonTags>
     </properties>
@@ -98,6 +97,12 @@
         </dependency>
         <dependency>
             <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-core-container-wildfly</artifactId>
+            <version>${cargo.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-core-container-tomcat</artifactId>
             <version>${cargo.version}</version>
         </dependency>
@@ -113,16 +118,12 @@
         </dependency>
          
         <dependency>
-            <groupId>org.jboss.as</groupId>
-            <artifactId>jboss-as-controller-client</artifactId>
-            <version>${jboss.version}</version>
-        </dependency>        
-        <dependency>
-            <groupId>org.jboss.remoting3</groupId>
-            <artifactId>jboss-remoting</artifactId>
-            <version>${jboss.remoting.version}</version>
-        </dependency> 
-   
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-controller-client</artifactId>
+            <version>${wildfly.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.glassfish.main.deployment</groupId>
             <artifactId>deployment-client</artifactId>
